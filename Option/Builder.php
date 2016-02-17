@@ -11,6 +11,10 @@ class Builder{
 
     public $option = [];
 
+    public function __construct($option = []){
+        $this->option = $option;
+    }
+
     /**
      * @param $name 需要进行设置的变量名
      * @param $arg  设置的参数
