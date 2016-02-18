@@ -56,7 +56,7 @@ class Builder{
             if ($type) {
                 $this->option[$name][] = $arg;
             } else {
-                $this->option[$name] = $arg;
+                $this->option[$name] = array_replace($this->option[$name],$arg);
             }
         }
         // 字符串, 则调用定义的函数进行一些特殊处理
