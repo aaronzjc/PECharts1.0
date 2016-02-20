@@ -1,7 +1,6 @@
 <?php
 namespace Option;
 /**
- * Created by PhpStorm.
  * User: memosa
  * Date: 16/1/29
  * Time: 19:54

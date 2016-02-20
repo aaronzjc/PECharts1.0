@@ -1,29 +1,28 @@
 <?php
 namespace Option;
 /**
- * Created by PhpStorm.
  * User: memosa
  * Date: 16/2/2
  * Time: 14:17
  */
 
 class Template{
+    public static $tpl = [
+        'title' => [
+            'show' => True,
+            'text' => 'PECharts@Memosa',
+            'x' => 'center',
+        ],
+        'tooltip' => [],
+        'toolbox' => [
+            'show' => True,
+            'orient' => 'horizontal',
+            'feature' => [],
+        ],
+        'legend' => [],
+    ];
     public static function pie(){
-        return [
-            'title' => [
-                'text' => '饼图',
-                'show' => True
-            ],
-            'tooltip' => [
-                'trigger' => 'item',
-                'formatter' => '{a} <br />'
-            ],
-            'legend' => [
-                'show' => True,
-                'orient' => 'vertical',
-                'x' => 'left'
-            ],
-            'series' => []
-        ];
+        // do your customs here
+        return self::$tpl;
     }
 }
