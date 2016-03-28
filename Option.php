@@ -15,7 +15,9 @@ class Option {
      * @param null $tpl
      */
     public function __construct($tpl = null) {
-        $this->option = call_user_func(['\Option\Template', $tpl]);
+        if (is_callable(['\Option\Template', $tpl])) {
+            $this->option = call_user_func(['\Option\Template', $tpl]);
+        }
     }
 
     /**
@@ -23,7 +25,7 @@ class Option {
      * @param $builder [] | closure \ builder
      * @return $this
      */
-    public function init($builder) {
+    public function init($builder = null) {
         if ($builder instanceof \Closure) {
             $callback = $builder;
             $builder = new \Option\Builder($this->option);
@@ -78,6 +80,23 @@ class Option {
                 $v = $key;
             }
         }
+    }
+
+    /**
+     * @param $type 图的类别
+     * @param array $data 数据
+     */
+    public function addSeries($type, $data = []) {
+        $classname = '\\Series\\' . $type;
+        $series = new $classname();
+        $seriesData = $series->handleData($data);
+        $this->option['series'][] = $seriesData;
+
+        return $this;
+    }
+
+    public function & series($index = 0) {
+        return $this->option['series'][$index];
     }
 
     /**
