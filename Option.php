@@ -87,10 +87,8 @@ class Option {
      * @param array $data 数据
      */
     public function addSeries($type, $data = []) {
-        $classname = '\\Series\\' . $type;
-        $series = new $classname();
-        $seriesData = $series->handleData($data);
-        $this->option['series'][] = $seriesData;
+
+
 
         return $this;
     }
@@ -123,5 +121,19 @@ class Option {
      */
     public function getOption() {
         return $this->option;
+    }
+
+    public function __call($name, $arg) {
+        $type = str_replace('series', '', $name);
+        $classname = '\\Series\\' . $type;
+        $series = new $classname();
+        $seriesData = $series->handleData($arg[0], $arg[1]);
+        $this->option['series'][] = $seriesData;
+
+        return $this;
+    }
+
+    public function done() {
+        // 这里就要处理很多东西了
     }
 }

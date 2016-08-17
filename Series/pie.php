@@ -8,7 +8,8 @@ class pie {
 
     }
 
-    public function handleData($data) {
+    public function handleData($option, $data) {
+        // 如果横坐标已经存在了,或者
         return $data;
     }
 

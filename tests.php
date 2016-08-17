@@ -16,3 +16,5 @@ $optionArr = $option->init([])->addSeries('pie', ['fuck' => 'me ?'])->addSeries(
 $optionArr->series(1)['excuse'] = 'you';
 $optionArr = $optionArr->getOption();
 var_dump($optionArr);
+
+$option->addSeries();
